@@ -10,7 +10,6 @@ export class App extends React.Component {
     'Alice',
     'Bob',
     'Charlie',
-    'Dave'
   ];
 
   state = {
@@ -23,7 +22,7 @@ export class App extends React.Component {
   }
 
   getName = () => {
-    const index = Math.floor(Math.random() * (this.names.length - 1));
+    const index = Math.floor(Math.random() * (this.names.length));
     return (this.names[index]);
   }
 
