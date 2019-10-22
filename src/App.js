@@ -3,7 +3,6 @@ import logo from './logo.svg';
 import { Wrapper } from './Wrapper';
 import { NameShuffling } from './NameShuffling';
 
-
 export class App extends React.Component {
 
   names = [
