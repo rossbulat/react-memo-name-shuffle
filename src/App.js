@@ -26,6 +26,10 @@ export class App extends React.Component {
     return (this.names[index]);
   }
 
+  clearName = () => {
+    this.setState({ name: null });
+  }
+
   render () {
 
     return (
@@ -36,7 +40,10 @@ export class App extends React.Component {
           alt="logo"
         />
         <h1>Memoize Test with Name Shuffling</h1>
-        <NameShuffling name={this.state.name} />
+        <NameShuffling
+          name={this.state.name}
+          clearName={this.clearName}
+        />
 
         <button
           onClick={() => {

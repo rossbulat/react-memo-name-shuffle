@@ -26,6 +26,7 @@ export const Wrapper = styled.div`
     border-radius: 5px;
     padding: 0.75rem 1rem;
     cursor: pointer;
+    margin-bottom: 0.5rem;
 
     &:active {
       color: #000;
