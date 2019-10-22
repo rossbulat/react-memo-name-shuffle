@@ -19,7 +19,6 @@ function Shuffle (props) {
   const { names } = props;
 
   const [name, setName] = React.useState(names[0]);
-
   const getName = React.useCallback(
     () => {
       const index = Math.floor(Math.random() * (names.length));
@@ -46,6 +45,7 @@ function Shuffle (props) {
 
       {React.useMemo(
         () => {
+          console.log('Name re-render');
           return (
             <>
               <h2>Selected Name: {name ? name : 'None'}</h2>
