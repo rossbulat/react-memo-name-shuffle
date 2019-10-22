@@ -20,13 +20,12 @@ export const Wrapper = styled.div`
 
   button {
     border-color: #09d3ac;
-    background: #fff;
     color: #09d3ac;
     font-size: 1rem;
     border-radius: 5px;
     padding: 0.75rem 1rem;
     cursor: pointer;
-    margin-bottom: 0.5rem;
+    margin: 0.25rem;
 
     &:active {
       color: #000;

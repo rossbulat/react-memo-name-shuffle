@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import { Wrapper } from './Wrapper';
 import { NameShuffling } from './NameShuffling';
+import { Counter } from './Counter';
 
 export class App extends React.Component {
 
@@ -53,7 +54,10 @@ export class App extends React.Component {
           }}
         >
           Shuffle
-      </button>
+        </button>
+
+        <h1>Memoize a Counter</h1>
+        <Counter />
       </Wrapper>
     );
   }
