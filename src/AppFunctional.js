@@ -2,24 +2,38 @@ import React from 'react';
 import logo from './logo.svg';
 import { Wrapper } from './Wrapper';
 
-function AppFunctional () {
+
+function App () {
 
   const names = [
     'Alice',
     'Bob',
-    'Charlie'
   ];
+
+  return (
+    <Shuffle names={names} />
+  );
+}
+
+function Shuffle (props) {
+  const { names } = props;
 
   const [name, setName] = React.useState(names[0]);
 
-  const getName = () => {
-    const index = Math.floor(Math.random() * (names.length));
-    return names[index];
-  }
+  const getName = React.useCallback(
+    () => {
+      const index = Math.floor(Math.random() * (names.length));
+      setName(names[index]);
+    },
+    [names]
+  );
 
-  const clearName = () => {
-    setName(null);
-  }
+  const clearName = React.useCallback(
+    () => {
+      setName(null)
+    },
+    []
+  );
 
   return (
     <Wrapper>
@@ -32,28 +46,40 @@ function AppFunctional () {
 
       {React.useMemo(
         () => {
-          console.log('Re-rendering');
           return (
             <>
               <h2>Selected Name: {name ? name : 'None'}</h2>
-              <button
-                onClick={() => { clearName() }}>Clear
-            </button>
             </>
           );
         },
         [name]
       )}
 
-      <button
-        onClick={() => {
-          setName(getName());
-        }}
-      >
-        Shuffle
-      </button>
+      <Button
+        label='Shuffle'
+        click={getName}
+      />
+      <Button
+        label='Clear'
+        click={clearName}
+      />
     </Wrapper>
   );
 }
 
-export default AppFunctional;
+function WrappedButton (props) {
+  console.log('button Re-render');
+  return (
+    <button
+      onClick={() => {
+        props.click();
+      }}
+    >
+      {props.label}
+    </button>
+  );
+}
+
+const Button = React.memo(WrappedButton);
+
+export default App;
